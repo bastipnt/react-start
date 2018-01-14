@@ -1,0 +1,10 @@
+{
+  "name": "react-start",
+  "version": "1.0.0",
+  "description": "Easy starter kit for creating react apps.",
+  "main": "index.js",
+  "repository": "https://github.com/lItc0de/react-start",
+  "author": "Basti Paintner @lItcode",
+  "license": "MIT",
+  "private": false
+}
