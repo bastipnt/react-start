@@ -24,6 +24,10 @@ Created with ❤️ by [Basti Paintner](https://twitter.com/lItc0de).
 - [Deployment](#deployment)
 - [Testing](#testing)
 - [Linting](#linting)
+- [Babel](#babel)
+  - [Plugins](#babel-plugins)
+  - [Presets](#babel-presets)
+  - [Env](#babel-env)
 
 ## Getting started
 - Clone this repo: `git clone https://github.com/lItc0de/react-start.git`
@@ -86,3 +90,30 @@ links to [yarn lint:eslint](#yarn-lint-eslint)
 
   for git hooks we use [pre-commit](https://github.com/observing/pre-commit)
 - 
+
+## Babel
+
+### Plugins
+- [styled-components](https://www.styled-components.com/docs/tooling#babel-plugin): This plugin adds support for server-side rendering, for minification of styles and gives you a nicer debugging experience.
+
+### Presets
+- [Env preset](https://babeljs.io/docs/plugins/preset-env): Babel preset that automatically determines the Babel plugins you need based on your supported environments. Uses compat-table.<br/>
+  [Option](https://babeljs.io/docs/plugins/preset-env#optionsmodules): Do not transform modules by setting `"modules": false`
+- [React preset](https://babeljs.io/docs/plugins/preset-react): Strip flow types and transform JSX into createElement calls.
+- [Stage-0 preset](https://babeljs.io/docs/plugins/preset-stage-0) includes:
+  - all stages from the [TC39 Process](https://tc39.github.io/process-document) (newest ES stuff that will possibly be included into ECMAScript)
+  - [transform-do-expressions](https://babeljs.io/docs/plugins/transform-do-expressions): Compile `do` expressions to ES5
+  - [transform-function-bind](https://babeljs.io/docs/plugins/transform-function-bind): Compile the new function bind operator `::` to ES5.
+
+### Env
+
+You can use the `env` option to set specific options when in a certain environment as documentet [here](https://babeljs.io/docs/usage/babelrc/#env-option).
+
+- **Production**
+  - [transform-react-remove-prop-types](https://github.com/oliviertassinari/babel-plugin-transform-react-remove-prop-types): Remove unnecessary React `propTypes` from the production build to save bandwith.
+  - [transform-react-constant-elements](https://babeljs.io/docs/plugins/transform-react-constant-elements): Treat React JSX elements as value types and hoist them to the highest scope to improve runtime performance.
+  - [transform-react-inline-elements](https://babeljs.io/docs/plugins/transform-react-inline-elements): Replaces the React.createElement function with babelHelpers.jsx.
+
+- **Test**
+  - [transform-es2015-modules-commonjs](https://babeljs.io/docs/plugins/transform-es2015-modules-commonjs): This plugin transforms ES2015 modules to CommonJS.
+  - [dynamic-import-node](https://github.com/airbnb/babel-plugin-dynamic-import-node): Babel plugin to transpile `import()` to a deferred `require()`, for node. Matches the [proposed spec](https://github.com/domenic/proposal-import-function).
