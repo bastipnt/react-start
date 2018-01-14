@@ -86,10 +86,18 @@ links to [yarn lint:eslint](#yarn-lint-eslint)
 
 ## Linting
 
-- Lint your code before commiting with [lint-staged](https://github.com/okonet/lint-staged)
-
+- Lint your code before commiting with [lint-staged](https://github.com/okonet/lint-staged)<br>
   for git hooks we use [pre-commit](https://github.com/observing/pre-commit)
-- 
+- **Configuration:**
+  - Parser: [babel-eslint](https://github.com/babel/babel-eslint): Use for [Flow](https://github.com/facebook/flow) and other experimantal features, that are not supportet by the [default parser](https://github.com/eslint/espree).
+  - [eslint-config-airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb): This package provides Airbnb's .eslintrc as an extensible shared config.
+  - Env: Specify supportet platfroms
+  - Plugins:
+    - [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react): Adds linting rules for react
+    - [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y): Static AST checker for [accessibility rules](https://github.com/reactjs/react-a11y) on JSX elements.
+  - Parser Options: Specify the JavaScript language options you want to support as explained [here](https://eslint.org/docs/user-guide/configuring#specifying-parser-options)
+  - Rules: Overwrite default rules.
+  - Settings: Add [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import), an ESLint plugin with rules that help validate proper imports.
 
 ## Babel
 
