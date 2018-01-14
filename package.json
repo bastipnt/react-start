@@ -3,8 +3,29 @@
   "version": "1.0.0",
   "description": "Easy starter kit for creating react apps.",
   "main": "index.js",
-  "repository": "https://github.com/lItc0de/react-start",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lItc0de/react-start.git"
+  },
   "author": "Basti Paintner @lItcode",
   "license": "MIT",
-  "private": false
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom",
+    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "lint:staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "lint:eslint"
+  },
+  "pre-commit": "lint:staged",
+  "dependencies": {},
+  "devDependencies": {
+    "lint-staged": "^6.0.0",
+    "pre-commit": "^1.2.2"
+  }
 }
