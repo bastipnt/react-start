@@ -25,9 +25,10 @@ Created with ❤️ by [Basti Paintner](https://twitter.com/lItc0de).
 - [Testing](#testing)
 - [Linting](#linting)
 - [Babel](#babel)
-  - [Plugins](#babel-plugins)
-  - [Presets](#babel-presets)
-  - [Env](#babel-env)
+  - [Plugins](#plugins)
+  - [Presets](#presets)
+  - [Env](#env)
+- [Webpack](#webpack)
 
 ## Getting started
 - Clone this repo: `git clone https://github.com/lItc0de/react-start.git`
@@ -125,3 +126,11 @@ You can use the `env` option to set specific options when in a certain environme
 - **Test**
   - [transform-es2015-modules-commonjs](https://babeljs.io/docs/plugins/transform-es2015-modules-commonjs): This plugin transforms ES2015 modules to CommonJS.
   - [dynamic-import-node](https://github.com/airbnb/babel-plugin-dynamic-import-node): Babel plugin to transpile `import()` to a deferred `require()`, for node. Matches the [proposed spec](https://github.com/domenic/proposal-import-function).
+
+## Webpack
+
+## DLLs
+
+The `DllPlugin` and `DllReferencePlugin` provide means to split bundles in a way that can drastically improve build time performance.
+
+- https://webpack.js.org/plugins/dll-plugin
