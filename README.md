@@ -85,6 +85,8 @@ links to [yarn lint:eslint](#yarn-lint-eslint)
 
 ## Testing
 
+For testing we use [Jest](https://facebook.github.io/jest): Jest is used by Facebook to test all JavaScript code including React applications. One of Jest's philosophies is to provide an integrated `zero-configuration` experience.
+
 ## Linting
 
 - Lint your code before commiting with [lint-staged](https://github.com/okonet/lint-staged)<br>
@@ -129,8 +131,16 @@ You can use the `env` option to set specific options when in a certain environme
 
 ## Webpack
 
-## DLLs
 
+## To be added
+
+- DLLs https://webpack.js.org/plugins/dll-plugin<br/>
 The `DllPlugin` and `DllReferencePlugin` provide means to split bundles in a way that can drastically improve build time performance.
 
-- https://webpack.js.org/plugins/dll-plugin
+- [react-hot-loader](https://github.com/gaearon/react-hot-loader): Tweak React components in real time. http://gaearon.github.io/react-hot-loader
+
+- [circular-dependency-plugin](https://github.com/aackerman/circular-dependency-plugin): Detect circular dependencies in modules compiled with Webpack.
+
+- [coveralls](https://github.com/nickmerwin/node-coveralls): Get the great coverage reporting of coveralls.io and add a cool coverage button.
+
+-
