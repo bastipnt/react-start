@@ -30,6 +30,9 @@ Created with ❤️ by [Basti Paintner](https://twitter.com/lItc0de).
   - [Presets](#presets)
   - [Env](#env)
 - [Webpack](#webpack)
+- [Used third party software](#used-third-party-software)
+- [To be eventually added](#to-be-eventually-added)
+- [Other interesting stuff](#other-interesting-stuff)
 
 ## Getting started
 - Clone this repo: `git clone https://github.com/lItc0de/react-start.git`
@@ -71,6 +74,8 @@ links to [yarn lint:eslint](#yarn-lint-eslint)
 
 ## Routing
 
+- [react-router-dom](https://github.com/ReactTraining/react-router): Declarative routing for React
+https://reacttraining.com/react-router
 
 ## State management
 
@@ -87,8 +92,16 @@ links to [yarn lint:eslint](#yarn-lint-eslint)
 - [styled-components](https://github.com/styled-components/styled-components): Visual primitives for the component age.
 Use the best bits of ES6 and CSS to style your apps without stress 💅
 
+- [sanitize.css](https://github.com/jonathantneal/sanitize.css): A CSS library that corrects broken and missing styles
+in all browsers, preserving useful defaults rather than unstyling everything.
+
 
 ## Locales
+
+For internationalisation we will use either:
+
+[react-intl](https://github.com/yahoo/react-intl) or
+[react-i18next](https://github.com/i18next/react-i18next)
 
 
 ## Deployment
@@ -183,6 +196,13 @@ You can use the `env` option to set specific options when in a certain environme
 - [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin): Simplifies creation of HTML files to serve
 your webpack bundles
 
+## Used third party software
+
+- [react-helmet](https://github.com/nfl/react-helmet): A document head manager for React
+
+- [react-loadable](https://github.com/thejameskyle/react-loadable): ⏳ A higher order component for loading components
+with promises. 
+
 
 ## To be eventually added
 
@@ -232,6 +252,22 @@ manifests
 
 - [whatwg-fetch](https://www.npmjs.com/package/whatwg-fetch): window.fetch polyfill for older browsers
 
+- [compression](https://github.com/expressjs/compression): Node.js compression middleware.
+
+- [cross-env](https://github.com/kentcdodds/cross-env): 🔀 Cross platform setting of environment scripts
+
+- [fontfaceobserver](https://github.com/bramstein/fontfaceobserver): Webfont loading. Simple, small, and efficient.
+https://fontfaceobserver.com
+
+- [history](https://github.com/ReactTraining/history): Manage session history with JavaScript
+
+- [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics): Copies non-react specific statics
+from a child component to a parent component (
+[explanation](https://reactjs.org/docs/higher-order-components.html#static-methods-must-be-copied-over))
+
+- [immutable](https://github.com/facebook/immutable-js): immutable persistent data collections for Javascript which
+increase efficiency and simplicity. http://facebook.github.io/immutable-js
+
 ## Other interesting stuff
 
 - [null-loader](https://github.com/webpack-contrib/null-loader): A loader that returns an empty module.
@@ -239,3 +275,15 @@ manifests
 - [rimraf](https://github.com/isaacs/rimraf): A `rm -rf` util for nodejs
 
 - [shelljs](https://github.com/shelljs/shelljs): 🐚 Portable Unix shell commands for Node.js http://shelljs.org
+
+- [chalk](https://github.com/chalk/chalk): 🖍 Terminal string styling done right.
+
+- [invariant](https://github.com/zertosh/invariant): A way to provide descriptive errors in development but generic
+errors in production.
+
+- [ip](https://github.com/indutny/node-ip): IP address utilities for node.js
+
+- [lodash](https://lodash.com): A modern JavaScript utility library delivering modularity, performance & extras.
+
+- [](https://github.com/substack/minimist): This module is the guts of optimist's argument parser without all the
+fanciful decoration.
