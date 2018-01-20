@@ -1,14 +1,17 @@
 // Important modules this config uses
-const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { appIndexJs } = require('../paths');
 // const OfflinePlugin = require('offline-plugin');
 
 module.exports = require('./webpack.config.base')({
+  bail: true,
+  // We generate sourcemaps in production. This is slow but gives good results.
+  // You can exclude the *.map files from the build during deployment.
+  devtool: 'source-map',
+
   // In production, we skip all hot-reloading stuff
-  entry: [
-    path.join(process.cwd(), 'app/app.js'),
-  ],
+  entry: [appIndexJs],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
@@ -27,7 +30,7 @@ module.exports = require('./webpack.config.base')({
 
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
-      template: 'app/index.html',
+      template: 'src/index.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -41,6 +44,27 @@ module.exports = require('./webpack.config.base')({
         minifyURLs: true,
       },
       inject: true,
+    }),
+
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        // Disabled because of an issue with Uglify breaking seemingly valid code:
+        // https://github.com/facebookincubator/create-react-app/issues/2376
+        // Pending further investigation:
+        // https://github.com/mishoo/UglifyJS2/issues/2011
+        comparisons: false,
+      },
+      mangle: {
+        safari10: true,
+      },
+      output: {
+        comments: false,
+        // Turned on because emoji and regex is not minified properly using default
+        // https://github.com/facebookincubator/create-react-app/issues/2488
+        ascii_only: true,
+      },
+      sourceMap: true,
     }),
 
     // Put it in the end to capture all the HtmlWebpackPlugin's

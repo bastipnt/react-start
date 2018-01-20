@@ -8,13 +8,10 @@ const chalk = require('chalk');
 const logger = {
 
   // Called whenever there's an error on the server we want to print
-  error: (err) => {
-    console.error(chalk.red(err));
-  },
-
-  info: (info) => {
-    console.info(chalk.blue(info));
-  },
+  success: (success) => console.log(chalk.blue(success)),
+  info: (info) => console.info(chalk.blue(info)),
+  warn: (warn) => console.warn(chalk.yellow(warn)),
+  error: (err) => console.error(chalk.red(err)),
 };
 
 module.exports = logger;

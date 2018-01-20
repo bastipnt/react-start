@@ -2,42 +2,41 @@
  * COMMON WEBPACK CONFIGURATION
  */
 
-const path = require('path');
 const webpack = require('webpack');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
+// const eslintFormatter = require('react-dev-utils/eslintFormatter');
+const { appBuild, appSrc } = require('../paths');
 
 module.exports = (options) => ({
   entry: options.entry,
   output: Object.assign({ // Compile into js/build.js
-    path: path.resolve(process.cwd(), 'build'),
+    path: appBuild,
     publicPath: '/',
   }, options.output), // Merge with env dependent settings
   module: {
     rules: [
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
-      {
-        test: /\.jsx?$/,
-        enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint'),
+      // {
+      //   test: /\.jsx?$/,
+      //   enforce: 'pre',
+      //   use: [
+      //     {
+      //       options: {
+      //         formatter: eslintFormatter,
+      //         eslintPath: require.resolve('eslint'),
 
-            },
-            loader: require.resolve('eslint-loader'),
-          },
-        ],
-        include: path.resolve(process.cwd(), 'src'),
-      },
+      //       },
+      //       loader: require.resolve('eslint-loader'),
+      //     },
+      //   ],
+      //   include: path.resolve(process.cwd(), 'src'),
+      // },
       {
         test: /\.jsx?$/, // Transform all .js and .jsx files required in /src with Babel
         use: {
           loader: 'babel-loader',
-          options: options.babelQuery,
         },
-        include: path.resolve(process.cwd(), 'src'),
+        include: appSrc,
       },
       {
         // Preprocess our own .css files

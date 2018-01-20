@@ -10,7 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const logger = require('../../server/logger');
-const pkg = require(path.resolve(process.cwd(), 'package.json'));
+const { appPackageJson, appIndexJs } = require('../paths');
+const pkg = require(appPackageJson);
 const { dllPlugin } = pkg;
 
 const plugins = [
@@ -40,7 +41,7 @@ module.exports = require('./webpack.config.base')({
   entry: [
     'eventsource-polyfill', // Necessary for hot reloading with IE
     'webpack-hot-middleware/client?reload=true',
-    path.join(process.cwd(), 'src/index.js'), // Start with js/index.js
+    appIndexJs, // Start with src/index.js
   ],
 
   // Don't use hashes in dev mode for better performance
