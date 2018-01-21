@@ -1,5 +1,7 @@
 /* eslint consistent-return:0 */
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const express = require('express');
 const logger = require('./logger');
 
@@ -21,7 +23,7 @@ const {
 // get the intended host and port number, use localhost and port 3000 if not provided
 const customHost = argv.host || argv.h || process.env.HOST;
 const openInBrowser = argv.o;
-const HOST = customHost || '0.0.0.0';
+const HOST = customHost || 'localhost';
 
 choosePort(HOST, DEFAULT_PORT)
   .then((port) => {
@@ -41,7 +43,8 @@ choosePort(HOST, DEFAULT_PORT)
     const devServer = app.listen(port, HOST, (err) => {
       if (err) return logger.error(err.message);
       if (isInteractive) clearConsole();
-      logger.info('Starting the development server...\n');
+      if (isProduction) logger.printServerInfo(port, HOST);
+      else logger.info(`Starting the ${process.env.NODE_ENV} server...\n`);
       if (openInBrowser) openBrowser(urls.localUrlForBrowser);
     });
 

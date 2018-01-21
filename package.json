@@ -14,7 +14,9 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development node server",
+    "prod": "yarn build && yarn serve",
     "build": "cross-env NODE_ENV=production node scripts/build.js",
+    "serve": "cross-env NODE_ENV=production node server",
     "test": "node scripts/test.js --env=jsdom",
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
     "lint:staged": "lint-staged"
@@ -167,6 +169,7 @@
   },
   "dependencies": {
     "chalk": "^2.3.0",
+    "compression": "^1.7.1",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.16.2",
     "fontfaceobserver": "^2.0.13",
