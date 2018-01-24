@@ -15,9 +15,11 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node server",
     "prod": "yarn build && yarn serve",
-    "build": "cross-env NODE_ENV=production node scripts/build.js",
+    "build": "yarn coverage && cross-env NODE_ENV=production node scripts/build.js",
     "serve": "cross-env NODE_ENV=production node server",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "cross-env NODE_ENV=test jest",
+    "coverage": "yarn test --coverage",
+    "watch": "cross-env NODE_ENV=test jest --watchAll",
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
     "lint:staged": "lint-staged"
   },
@@ -101,7 +103,7 @@
       "import/no-webpack-loader-syntax": 0,
       "import/prefer-default-export": 0,
       "indent": [
-        2,
+        "error",
         2,
         {
           "SwitchCase": 1
@@ -161,10 +163,10 @@
       "src"
     ],
     "moduleNameMapper": {
-      ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/internals/mocks/cssModule.js",
-      ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/image.js"
+      ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/config/mocks/cssModule.js",
+      ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/mocks/image.js"
     },
-    "setupTestFrameworkScriptFile": "<rootDir>/internals/testing/test-bundler.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/config/setup.tests.js",
     "testRegex": "tests/.*\\.test\\.js$"
   },
   "dependencies": {
@@ -208,6 +210,7 @@
     "cross-env": "^5.1.3",
     "css-loader": "^0.28.9",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.15.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",

@@ -14,13 +14,18 @@ const logger = {
   error: (err) => console.error(chalk.red(err)),
 
   printServerInfo: (port, host) => {
-    console.log(`Server started ! ${chalk.green('✓')}`);
+    console.log(`Server started ${chalk.green('✓')}`);
     console.log(`
 ${chalk.bold('Access URLs:')}${divider}
 Localhost: ${chalk.magenta(`http://${host}:${port}`)}
       LAN: ${chalk.magenta(`http://${ip.address()}:${port}`)}${divider}
 ${chalk.blue(`Press ${chalk.italic('CTRL-C')} to stop`)}
     `);
+  },
+
+  printHostingInstructions: () => {
+    console.log(`\nThe ${chalk.blue('build')} folder is ready to be deployed.`, divider);
+    console.log(chalk.blue('You can serve your app now with'), chalk.yellow('`yarn serve`\n'));
   },
 };
 

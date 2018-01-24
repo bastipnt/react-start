@@ -1,21 +1,24 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
 
-const Home = () => <h2> haha sdfad ich bin eine route yay </h2>;
-const About = () => <h2> ich bin eine zweite lool route </h2>;
+import Header from './components/Header';
+import Home from './components/Home';
+import Footer from './components/Footer';
+import NotFound from './components/NotFound';
 
-const Main = (props) => <div>{props.children}</div>;
+export const Main = styled.main`
 
-Main.propTypes = {
-  children: PropTypes.array,
-};
+`;
 
 const App = () => (
   <Main>
-    <h1> Looool jay </h1>
-    <Route exact path="/" component={Home} />
-    <Route exact path="/about" component={About} />
+    <Header />
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="" component={NotFound} />
+    </Switch>
+    <Footer />
   </Main>
 );
 

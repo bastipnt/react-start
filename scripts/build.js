@@ -7,19 +7,15 @@ process.on('unhandledRejection', (err) => {
 
 const webpack = require('webpack');
 const config = require('../config/webpack/webpack.config.prod');
-const { relative } = require('path');
 const logger = require('../server/logger');
 const { measureFileSizesBeforeBuild, printFileSizesAfterBuild } = require('react-dev-utils/FileSizeReporter');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
-const printHostingInstructions = require('react-dev-utils/printHostingInstructions');
 const printBuildError = require('react-dev-utils/printBuildError');
 const fs = require('fs-extra');
 const {
-  appBuild, appHtml, appIndexJs, appPackageJson, publicUrl,
+  appBuild, appHtml, appIndexJs,
 } = require('../config/paths');
-
-const useYarn = true;
 
 // These sizes are pretty large. We'll warn for bundles exceeding them.
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
@@ -57,18 +53,8 @@ measureFileSizesBeforeBuild(appBuild)
         WARN_AFTER_BUNDLE_GZIP_SIZE,
         WARN_AFTER_CHUNK_GZIP_SIZE
       );
-      logger.info();
 
-      const appPackage = require(appPackageJson); // eslint-disable-line global-require
-      const { publicPath } = config.output;
-      const buildFolder = relative(process.cwd(), appBuild);
-      printHostingInstructions(
-        appPackage,
-        publicUrl,
-        publicPath,
-        buildFolder,
-        useYarn
-      );
+      logger.printHostingInstructions();
     },
     (err) => {
       logger.error('Failed to compile.\n');
