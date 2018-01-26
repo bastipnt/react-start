@@ -14,9 +14,9 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development node server",
-    "prod": "yarn build && yarn serve",
     "build": "yarn coverage && cross-env NODE_ENV=production node scripts/build.js",
     "serve": "cross-env NODE_ENV=production node server",
+    "prod": "yarn build && yarn serve",
     "test": "cross-env NODE_ENV=test jest",
     "coverage": "yarn test --coverage",
     "watch": "cross-env NODE_ENV=test jest --watchAll",
@@ -147,7 +147,7 @@
       "!src/**/*.test.{js,jsx}",
       "!src/*/RbGenerated*/*.{js,jsx}",
       "!src/index.js",
-      "!src/global-styles.js",
+      "!src/globalStyles.js",
       "!src/*/*/Loadable.{js,jsx}"
     ],
     "coverageThreshold": {

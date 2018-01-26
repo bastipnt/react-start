@@ -1,22 +1,34 @@
+---
+Title:    React Start
+Date:     25.01.2018
+Author:   Sebastian Paintner
+Keywords: react, mobx, frontend, web, hmr
+---
+
 # Easy start with react
 
 ## About
-Boilerplate for ne easy start with react apps.
+Boilerplate for an easy start with react apps.
 
 Created with ❤️ by [Basti Paintner](https://twitter.com/lItc0de).
 
+Inspiration and many ideas taken from
+[react-boilerplate](https://github.com/react-boilerplate/react-boilerplate) and
+[create-react-app](https://github.com/facebook/create-react-app). Thx a lot!
+
 ## Table of Contents
 
-- [Getting started](#getting-started)
-- [Whats inside](#whats-inside)
 - [Features](#features)
+- [Getting started](#getting-started)
 - [Folder Structure](#folder-structure)
 - [Available Scripts](#available-scripts)
   - [yarn start](#yarn-start)
-  - [yarn test](#yarn-test)
   - [yarn build](#yarn-build)
-  - [yarn lint:eslint](#yarn-lint-eslint)
-  - [yarn lint:staged](#yarn-lint-staged)
+  - [yarn serve](#yarn-serve)
+  - [yarn prod](#yarn-prod)
+  - [yarn test](#yarn-test)
+  - [yarn coverage](#yarn-coverage)
+  - [yarn watch](#yarn-watch)
 - [Routing](#routing)
 - [State management](#state-management)
 - [Styling](#styling)
@@ -34,67 +46,112 @@ Created with ❤️ by [Basti Paintner](https://twitter.com/lItc0de).
 - [To be eventually added](#to-be-eventually-added)
 - [Other interesting stuff](#other-interesting-stuff)
 
-## Getting started
-- Clone this repo: `git clone https://github.com/lItc0de/react-start.git`
-- Move into repo: `cd react-start`
-- Install modules using [yarn](https://yarnpkg.com/lang/en/docs/install/): `yarn install`
-- Start app on http://localhost:3000: `yarn start`
-
-Now you can start creating your app!
-
-## Whats inside
-
-
 ## Features
 
+**Routing**
+
+Client side routing out of the box with [react-router](https://github.com/ReactTraining/react-router).
+
+**Styling**
+
+Awesome component based styling with
+[styled-components](https://github.com/styled-components/styled-components).
+
+**Hot Module Replacement (HMR)**
+
+Save your work and have the page automatically rerendered without reloading!<br/>
+-> Instantly see your changes with [react-hot-loader](https://github.com/gaearon/react-hot-loader).
+
+**Lastest JavaScript features**
+
+i.e. template strings, arrow functions, JSX syntax...
+
+**Linting**
+
+No commit without being lintet, to assure code quality and best practices.
+
+**Bulletproof test setup**
+
+Run Jest tests before each build! It's not possible to deploy with failing tests.
+
+## Getting started
+- Clone this repo: `git clone https://github.com/lItc0de/react-start.git`
+- Get inside: `cd react-start`
+- Install dependencies using [yarn](https://yarnpkg.com/lang/en/docs/install/): `yarn install`
+- Run that thing on http://localhost:3000 with: `yarn start`
+
+-> Now you are good to go and build your awsome project!
 
 ## Folder Structure
+
+`/`  
+&nbsp;&nbsp;&nbsp;&nbsp;
+`build/` all your production ready compiled files  
+&nbsp;&nbsp;&nbsp;&nbsp;
+`src/` all your source files  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`assets/` images, videos, icons, fonts, ...  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`components/` all your components and component styles  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`styles/` all the reusable styles, shared throughout your components  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`App.jsx` your main component  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`globalStyles.js` in here you could set the font or other things, that should apply to the whole app  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`index.html` in here your app gets injected  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`index.js` this file injects your app in the index.html file and loads other dependencies  
+&nbsp;&nbsp;&nbsp;&nbsp;
+`tests/` in here you can write your tests
 
 
 ## Available Scripts
 
 ### `yarn start`
 
-Runs the app in the development mode.<br>
+Starts the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-
-### `yarn test`
+The page will rerender if you make changes.
 
 ### `yarn build`
 
-### `yarn lint:eslint`
+compiles your app for production use<br/>
+you can find it then in the `build` folder
 
-Lints your app and shows linting errors in the console
+### `yarn serve`
 
-### `yarn lint:staged`
+starts an express server, that serves your production compiled app from the build folder
 
-links to [yarn lint:eslint](#yarn-lint-eslint)
+## `yarn prod`
+
+does the two above steps: first builds the app, then serves it
+
+### `yarn test`
+
+runs your jest tests
+
+### `yarn coverage`
+
+runs your jest tests and prints coverage report
+
+### `yarn watch`
+
+runs your jest tests in watch mode
 
 ## Routing
 
-- [react-router-dom](https://github.com/ReactTraining/react-router): Declarative routing for React
-https://reacttraining.com/react-router
-
-## State management
-
+This setup uses the [react-router](https://github.com/ReactTraining/react-router)
+from reacttraining.com  
+For mor information please visit their [website](reacttraining.com/react-router)
 
 ## Styling
 
-**Style loaders**
-
-- [css-loader](https://github.com/webpack-contrib/css-loader): The css-loader interprets `@import` and `url()` like
-`import/require()` and will resolve them.
-
-- [style-loader](https://github.com/webpack-contrib/style-loader): Style loader for webpack to combine with `css-loader`
-
-- [styled-components](https://github.com/styled-components/styled-components): Visual primitives for the component age.
-Use the best bits of ES6 and CSS to style your apps without stress 💅
-
-- [sanitize.css](https://github.com/jonathantneal/sanitize.css): A CSS library that corrects broken and missing styles
-in all browsers, preserving useful defaults rather than unstyling everything.
-
+You can style your components with [styled-components](https://github.com/styled-components/styled-components)  
+With this you can write real `CSS` in `JavaScript`!  
+Please check their [website](https://www.styled-components.com/) for further information
 
 ## Locales
 
@@ -103,29 +160,10 @@ For internationalisation we will use either:
 [react-intl](https://github.com/yahoo/react-intl) or
 [react-i18next](https://github.com/i18next/react-i18next)
 
-
-## Deployment
-
-
 ## Testing
 
 For testing we use [Jest](https://facebook.github.io/jest): Jest is used by Facebook to test all JavaScript code
 including React applications. One of Jest's philosophies is to provide an integrated `zero-configuration` experience.
-
-## Assets
-
-- [file-loader](https://github.com/webpack-contrib/file-loader): Instructs webpack to emit the required object as file
-and to return its public URL
-
-- [url-loader](https://github.com/webpack-contrib/url-loader): The `url-loader` works like the `file-loader`, but can
-return a `DataURL` if the file is smaller than a byte limit.
-
-- [image-webpack-loader](https://github.com/tcoopman/image-webpack-loader): Image loader module for webpack. Minify
-`PNG`, `JPEG`, `GIF`, `SVG` and `WEBP` images with [imagemin](https://github.com/imagemin/imagemin)<br/>
-  **warning** image-webpack-loader > imagemin-pngquant > pngquant-bin > bin-build > download > gulp-decompress >
-  gulp-util@3.0.8: gulp-util is deprecated - replace it, following the guidelines at
-  https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
-
 
 
 ## Linting
