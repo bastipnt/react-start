@@ -3,6 +3,8 @@
 const isProduction = process.env.NODE_ENV === 'production';
 
 const express = require('express');
+const http = require('http');
+const https = require('https');
 const logger = require('./logger');
 
 const argv = require('./argv');
@@ -10,7 +12,8 @@ const DEFAULT_PORT = require('./port');
 const clearConsole = require('react-dev-utils/clearConsole');
 const openBrowser = require('react-dev-utils/openBrowser');
 const setup = require('./middlewares/frontendMiddleware');
-const { resolve } = require('path');
+const { appBuild, keyPath, certPath } = require('../config/paths');
+const fs = require('fs');
 
 const app = express();
 const isInteractive = process.stdout.isTTY;
@@ -34,13 +37,23 @@ choosePort(HOST, DEFAULT_PORT)
 
     // In production we need to pass these values in instead of relying on webpack
     setup(app, {
-      outputPath: resolve(process.cwd(), 'build'),
+      outputPath: appBuild,
       publicPath: '/',
       urls,
     });
 
+    let serverObject;
+    if (protocol === 'https') {
+      const privateKey = fs.readFileSync(keyPath).toString();
+      const certificate = fs.readFileSync(certPath).toString();
+      const credentials = { key: privateKey, cert: certificate };
+      serverObject = https.createServer(credentials, app);
+    } else {
+      serverObject = http.createServer(app);
+    }
+
     // Start your app.
-    const devServer = app.listen(port, HOST, (err) => {
+    const devServer = serverObject.listen(port, HOST, (err) => {
       if (err) return logger.error(err.message);
       if (isInteractive) clearConsole();
       if (isProduction) logger.printServerInfo(port, HOST);

@@ -47,4 +47,6 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  keyPath: resolve(process.env.HOME, '.ssl/localhost.key'),
+  certPath: resolve(process.env.HOME, '.ssl/localhost.crt'),
 };
