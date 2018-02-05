@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { appIndexJs } = require('../paths');
-// const OfflinePlugin = require('offline-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 module.exports = require('./webpack.config.base')({
   bail: true,
@@ -67,30 +67,26 @@ module.exports = require('./webpack.config.base')({
       sourceMap: true,
     }),
 
-    // Put it in the end to capture all the HtmlWebpackPlugin's
-    // assets manipulations and do leak its manipulations to HtmlWebpackPlugin
-    // new OfflinePlugin({
-    //   relativePaths: false,
-    //   publicPath: '/',
+    new OfflinePlugin({
+      relativePaths: false,
+      publicPath: '/',
 
-    //   // No need to cache .htaccess. See http://mxs.is/googmp,
-    //   // this is applied before any match in `caches` section
-    //   excludes: ['.htaccess'],
+      excludes: ['.htaccess'],
 
-    //   caches: {
-    //     main: [':rest:'],
+      caches: {
+        main: [':rest:'],
 
-    //     // All chunks marked as `additional`, loaded after main section
-    //     // and do not prevent SW to install. Change to `optional` if
-    //     // do not want them to be preloaded at all (cached only when first loaded)
-    //     additional: ['*.chunk.js'],
-    //   },
+        // All chunks marked as `additional`, loaded after main section
+        // and do not prevent SW to install. Change to `optional` if
+        // do not want them to be preloaded at all (cached only when first loaded)
+        // additional: ['*.chunk.js'],
+      },
 
-    //   // Removes warning for about `additional` section usage
-    //   safeToUseOptionalCaches: true,
+      // Removes warning for about `additional` section usage
+      safeToUseOptionalCaches: true,
 
-    //   AppCache: false,
-    // }),
+      AppCache: false,
+    }),
   ],
 
   performance: {
