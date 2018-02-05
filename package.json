@@ -20,6 +20,7 @@
     "test": "cross-env NODE_ENV=test jest",
     "coverage": "yarn test --coverage",
     "watch": "cross-env NODE_ENV=test jest --watchAll",
+    "build:dll": "node scripts/buildDll.js",
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
     "lint:staged": "lint-staged"
   },
@@ -169,6 +170,22 @@
     "setupTestFrameworkScriptFile": "<rootDir>/config/setup.tests.js",
     "testRegex": "tests/.*\\.test\\.js$"
   },
+  "dllPlugin": {
+    "exclude": [
+      "chalk",
+      "compression",
+      "cross-env",
+      "express",
+      "ip",
+      "minimist",
+      "sanitize.css"
+    ],
+    "include": [
+      "core-js",
+      "lodash",
+      "eventsource-polyfill"
+    ]
+  },
   "dependencies": {
     "chalk": "^2.3.0",
     "compression": "^1.7.1",
@@ -185,8 +202,6 @@
     "react-router-dom": "^4.2.2",
     "sanitize.css": "^5.0.0",
     "styled-components": "^2.4.0",
-    "webpack-dev-middleware": "^2.0.4",
-    "webpack-hot-middleware": "^2.21.0",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
@@ -230,8 +245,11 @@
     "pre-commit": "^1.2.2",
     "react-dev-utils": "^5.0.0",
     "react-test-renderer": "^16.2.0",
+    "shelljs": "^0.8.1",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-middleware": "^2.0.4",
+    "webpack-hot-middleware": "^2.21.0"
   }
 }

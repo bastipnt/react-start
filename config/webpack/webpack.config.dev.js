@@ -10,7 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const logger = require('../../server/logger');
-const { appPackageJson, appIndexJs } = require('../paths');
+const { appPackageJson, appIndexJs, dllPath } = require('../paths');
 const pkg = require(appPackageJson);
 const { dllPlugin } = pkg;
 
@@ -28,9 +28,9 @@ const plugins = [
 ];
 
 if (dllPlugin) {
-  glob.sync(`${dllPlugin.path}/*.dll.js`).forEach((dllPath) => {
+  glob.sync(`${dllPath}/*.dll.js`).forEach((filepath) => {
     plugins.push(new AddAssetHtmlPlugin({
-      filepath: dllPath,
+      filepath,
       includeSourcemap: false,
     }));
   });
@@ -87,17 +87,15 @@ function dependencyHandlers() {
     ];
   }
 
-  const dllPath = path.resolve(process.cwd(), dllPlugin.path || 'node_modules/react-boilerplate-dlls');
-
   /**
    * If DLLs aren't explicitly defined, we assume all production dependencies listed in package.json
    * Reminder: You need to exclude any server side dependencies by listing them in dllConfig.exclude
    */
   if (!dllPlugin.dlls) {
-    const manifestPath = path.resolve(dllPath, 'reactBoilerplateDeps.json');
+    const manifestPath = path.resolve(dllPath, 'appDeps.json');
 
     if (!fs.existsSync(manifestPath)) {
-      logger.error('The DLL manifest is missing. Please run `npm run build:dll`');
+      logger.error('The DLL manifest is missing. Please run `yarn build:dll`');
       process.exit(0);
     }
 
@@ -117,7 +115,7 @@ function dependencyHandlers() {
       if (!fs.existsSync(manifestPath)) {
         logger.error(`The following Webpack DLL manifest is missing: ${path.basename(manifestPath)}`);
         logger.error(`Expected to find it in ${dllPath}`);
-        logger.error('Please run: npm run build:dll');
+        logger.error('Please run: yarn build:dll');
 
         process.exit(0);
       }
