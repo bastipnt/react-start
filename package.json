@@ -22,10 +22,14 @@
     "watch": "cross-env NODE_ENV=test jest --watchAll",
     "build:dll": "node scripts/buildDll.js",
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "lint:css": "stylelint",
     "lint:staged": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx}": "lint:eslint"
+    "*.{js,jsx}": [
+      "lint:eslint",
+      "lint:css"
+    ]
   },
   "pre-commit": "lint:staged",
   "babel": {
@@ -142,6 +146,16 @@
       }
     }
   },
+  "stylelint": {
+    "processors": [
+      "stylelint-processor-styled-components"
+    ],
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-styled-components"
+    ],
+    "syntax": "scss"
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
@@ -248,6 +262,10 @@
     "react-test-renderer": "^16.2.0",
     "shelljs": "^0.8.1",
     "style-loader": "^0.19.1",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.2.2",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",

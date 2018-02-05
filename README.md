@@ -29,6 +29,7 @@ Inspiration and many ideas taken from
   - [yarn test](#yarn-test)
   - [yarn coverage](#yarn-coverage)
   - [yarn watch](#yarn-watch)
+  - [yarn build:dll](#yarn-build-dll)
 - [Routing](#routing)
 - [State management](#state-management)
 - [Styling](#styling)
@@ -140,6 +141,10 @@ runs your jest tests and prints coverage report
 ### `yarn watch`
 
 runs your jest tests in watch mode
+
+<h3 id="yarn-build-dll"><code>yarn build:dll</code></h3>
+
+builds a DLL file for improving compile time in development (https://webpack.js.org/plugins/dll-plugin)
 
 ## Routing
 
@@ -263,67 +268,3 @@ package includes some utilities used by [Create React App](https://github.com/fa
 - [exports-loader](https://github.com/webpack-contrib/exports-loader): Exports variables from inside the file by
 appending `exports[...] = ...` statements..
 
-## To be eventually added
-
-- DLLs https://webpack.js.org/plugins/dll-plugin<br/>
-The `DllPlugin` and `DllReferencePlugin` provide means to split bundles in a way that can drastically improve build time
-performance.
-
-- [react-hot-loader](https://github.com/gaearon/react-hot-loader): Tweak React components in real time.
-http://gaearon.github.io/react-hot-loader
-
-- [coveralls](https://github.com/nickmerwin/node-coveralls): Get the great coverage reporting of coveralls.io and add a
-cool coverage button.
-
-- [imports-loader](https://github.com/webpack-contrib/imports-loader): The imports loader allows you to use modules that
-depend on specific global variables.
-
-- [ngrock](https://github.com/inconshreveable/ngrok): ngrok is a reverse proxy that creates a secure tunnel from a
-public endpoint to a locally running web service. ngrok captures and analyzes all traffic over the tunnel for later
-inspection and replay.
-
-- [node-plop](https://github.com/amwmedia/node-plop): programmatic plopping for fun and profit http://plopjs.com
-
-- [offline-plugin](https://github.com/NekR/offline-plugin): Offline plugin (ServiceWorker, AppCache) for webpack
-
-- [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware): An `express-style` development middleware
-for use with `webpack` bundles and allows for serving of the files emitted from webpack.
-
-- [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware): Webpack hot reloading using only
-`webpack-dev-middleware`. This allows you to add hot reloading into an existing server without `webpack-dev-server`.
-
-- [autoprefixer](https://github.com/postcss/autoprefixer): Parse CSS and add vendor prefixes to rules by Can I Use
-https://twitter.com/autoprefixer
-
-- [webpack-manifest-plugin](https://github.com/danethurber/webpack-manifest-plugin): webpack plugin for generating asset
-manifests
-
-- [compression](https://github.com/expressjs/compression): Node.js compression middleware.
-
-- [fontfaceobserver](https://github.com/bramstein/fontfaceobserver): Webfont loading. Simple, small, and efficient.
-https://fontfaceobserver.com
-
-- [history](https://github.com/ReactTraining/history): Manage session history with JavaScript
-
-- [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics): Copies non-react specific statics
-from a child component to a parent component (
-[explanation](https://reactjs.org/docs/higher-order-components.html#static-methods-must-be-copied-over))
-
-- [immutable](https://github.com/facebook/immutable-js): immutable persistent data collections for Javascript which
-increase efficiency and simplicity. http://facebook.github.io/immutable-js
-
-## Other interesting stuff
-
-- [null-loader](https://github.com/webpack-contrib/null-loader): A loader that returns an empty module.
-
-- [rimraf](https://github.com/isaacs/rimraf): A `rm -rf` util for nodejs
-
-- [shelljs](https://github.com/shelljs/shelljs): 🐚 Portable Unix shell commands for Node.js http://shelljs.org
-
-- [invariant](https://github.com/zertosh/invariant): A way to provide descriptive errors in development but generic
-errors in production.
-
-- [lodash](https://lodash.com): A modern JavaScript utility library delivering modularity, performance & extras.
-
-- [minimist](https://github.com/substack/minimist): This module is the guts of optimist's argument parser without all the
-fanciful decoration.
