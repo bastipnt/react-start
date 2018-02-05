@@ -13,7 +13,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import FontFaceObserver from 'fontfaceobserver';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { I18nextProvider } from 'react-i18next';
 import 'sanitize.css/sanitize.css';
+import i18n from './i18n'; // initialized i18next instance
 
 // Import root app
 import App from './App';
@@ -60,7 +62,7 @@ const MOUNT_NODE = document.getElementById('app');
 const render = () => {
   ReactDOM.render(
     <Router>
-      <App />
+      <I18nextProvider i18n={i18n}><App /></I18nextProvider>
     </Router>,
     MOUNT_NODE
   );
