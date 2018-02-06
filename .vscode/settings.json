@@ -6,4 +6,13 @@
   "files.insertFinalNewline": true,
   "eslint.enable": true,
   "eslint.packageManager": "yarn",
+  "stylelint.enable": true,
+  "stylelint.additionalDocumentSelectors": [
+    "js",
+    "jsx"
+  ],
+  "css.validate": false,
+  "scss.validate": false,
+  "javascript.validate.enable": false,
+  "flow.useNPMPackagedFlow": true,
 }
