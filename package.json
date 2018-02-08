@@ -24,7 +24,8 @@
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
     "lint:css": "stylelint",
     "lint:staged": "lint-staged",
-    "storybook": "start-storybook -p 9001 -c config/storybook"
+    "storybook": "start-storybook -p 9001 -c config/storybook",
+    "postinstall": "yarn build:dll"
   },
   "lint-staged": {
     "*.{js,jsx}": [
