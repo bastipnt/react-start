@@ -23,7 +23,8 @@
     "build:dll": "node scripts/buildDll.js",
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
     "lint:css": "stylelint",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "storybook": "start-storybook -p 9001 -c config/storybook"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -163,6 +164,8 @@
       "!src/**/*.test.{js,jsx}",
       "!src/*/RbGenerated*/*.{js,jsx}",
       "!src/index.js",
+      "!src/i18n.js",
+      "!src/styles/*.js",
       "!src/globalStyles.js",
       "!src/*/*/Loadable.{js,jsx}"
     ],
@@ -225,6 +228,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "@storybook/react": "^3.3.12",
     "add-asset-html-webpack-plugin": "^2.1.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
