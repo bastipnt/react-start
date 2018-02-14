@@ -4,7 +4,7 @@
 
 const webpack = require('webpack');
 // const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const { appBuild, appSrc } = require('../paths');
+const { appBuild, appSrc, styles } = require('../paths');
 
 module.exports = (options) => ({
   entry: options.entry,
@@ -84,7 +84,7 @@ module.exports = (options) => ({
     new webpack.NamedModulesPlugin(),
   ]),
   resolve: {
-    modules: ['index', 'node_modules'],
+    modules: ['index', 'node_modules', 'styles'],
     extensions: [
       '.js',
       '.jsx',
@@ -95,6 +95,9 @@ module.exports = (options) => ({
       'jsnext:main',
       'main',
     ],
+    alias: {
+      styles,
+    },
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window

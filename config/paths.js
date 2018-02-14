@@ -50,4 +50,5 @@ module.exports = {
   keyPath: resolve(process.env.HOME, '.ssl/localhost.key'),
   certPath: resolve(process.env.HOME, '.ssl/localhost.crt'),
   dllPath: resolveApp('node_modules/react-start-dlls'),
+  styles: resolveApp('src/styles'),
 };

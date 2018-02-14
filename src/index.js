@@ -12,10 +12,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FontFaceObserver from 'fontfaceobserver';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { I18nextProvider } from 'react-i18next';
 import 'sanitize.css/sanitize.css';
-import i18n from './i18n'; // initialized i18next instance
 
 // Import root app
 import App from './App';
@@ -44,14 +41,21 @@ import 'file-loader?name=[name].[ext]!./.htaccess'; // eslint-disable-line impor
 /* eslint-enable import/no-unresolved */
 
 // Import CSS reset and Global Styles
-import './globalStyles';
+import './styles/global';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Open Sans', {});
+const fontAwesomeObserver = new FontFaceObserver('FontAwesome', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
 openSansObserver.load().then(() => {
+  document.body.classList.add('fontLoaded');
+}, () => {
+  document.body.classList.remove('fontLoaded');
+});
+
+fontAwesomeObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 }, () => {
   document.body.classList.remove('fontLoaded');
@@ -61,9 +65,7 @@ const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
   ReactDOM.render(
-    <Router>
-      <I18nextProvider i18n={i18n}><App /></I18nextProvider>
-    </Router>,
+    <App />,
     MOUNT_NODE
   );
 };
