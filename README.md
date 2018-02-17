@@ -1,9 +1,9 @@
----
+<!--
 Title:    React Start
 Date:     25.01.2018
 Author:   Sebastian Paintner
 Keywords: react, mobx, frontend, web, hmr
----
+-->
 
 # Easy start with react
 

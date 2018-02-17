@@ -58,6 +58,13 @@ module.exports = (options) => ({
         use: 'html-loader',
       },
       {
+        test: /\.md/,
+        use: [
+          'html-loader',
+          'markdown-loader',
+        ],
+      },
+      {
         test: /\.json$/,
         use: 'json-loader',
       },

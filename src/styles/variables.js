@@ -4,8 +4,10 @@ import { opacify } from './helpers';
 export const color = {
   text: opacify('#70708D', 1),
   textLight: opacify('#70708D', 0.4),
+  textDark: opacify('#64647e', 1),
   textSpecial: '#6064FA',
   textHeader: opacify('#fff', 0.8),
+  link: '#6064FA',
   background: opacify('#fff', 1),
   backgroundDark: opacify('#70708D', 0.1),
   backgroundSpecial: '#FDFDFF',
