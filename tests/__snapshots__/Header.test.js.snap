@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render the header 1`] = `
+Array [
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      exact={undefined}
+      path="/todo"
+    />
+  </Switch>,
+]
+`;
+
+exports[`default <Header /> should render the default header 1`] = `
+Array [
+  <Headerstyles__HeaderBar>
+    <Headerstyles__HeaderTitle>
+      Welcome to React Start
+    </Headerstyles__HeaderTitle>
+    <Headerstyles__HeaderLink>
+      <Link
+        href="/todo"
+        label="ToDo"
+        replace={false}
+        to="/todo"
+      >
+        ToDo Example
+      </Link>
+    </Headerstyles__HeaderLink>
+  </Headerstyles__HeaderBar>,
+]
+`;

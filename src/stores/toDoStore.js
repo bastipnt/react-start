@@ -5,7 +5,6 @@ class ToDo implements TODO {
   @observable text;
   @observable inEdit;
   @observable completed;
-  index;
   createdAt;
   changedAt;
 
@@ -33,7 +32,7 @@ class ToDo implements TODO {
 class ToDoStore implements TODOSTORE {
   @observable toDos = []
 
-  createToDo = (text: string) => { this.toDos.push(new ToDo(text)); }
+  createToDo = (text: string) => { if (text) this.toDos.push(new ToDo(text)); }
 
   deleteToDo = (toDo: TODO) => { this.toDos.remove(toDo); }
 }

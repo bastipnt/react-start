@@ -11,9 +11,11 @@ import {
   TLDate,
   TLMonth,
   TLCount,
-  TLWrapper } from 'styles';
+  TLWrapper,
+} from 'styles';
 
 import ToDo from './ToDo';
+import { toDay, toWeekDay, toMonth } from '../utils/dateFormat';
 
 type Props = {
   toDoStore: TODOSTORE,
@@ -35,27 +37,31 @@ class ToDoList extends Component<Props> {
     this.props.toDoStore.toDos.sort((a) => a.completed ? 1 : -1).map((toDo) =>
       <ToDo key={toDo.createdAt} toDo={toDo} deleteToDo={this.props.toDoStore.deleteToDo} />)
 
-  render = () => (
-    <Page>
-      <TLWrapper>
-        <TLHeader>
-          <TLDate><b>Thursday</b>, 10th</TLDate>
-          <TLMonth>December</TLMonth>
-          <TLCount><b>{this.props.toDoStore.toDos.length}</b> Tasks</TLCount>
-        </TLHeader>
-        <TLNew>
-          <Input
-            onKeyPress={this.handleKeyPress}
-            placeholder="Add new task!"
-            autoFocus
-          />
-        </TLNew>
-        <TLList>
-          {this.toDos()}
-        </TLList>
-      </TLWrapper>
-    </Page>
-  );
+  render = () => {
+    const now = new Date();
+    return (
+      <Page>
+        <TLWrapper>
+          <TLHeader>
+            <TLDate><b>{toWeekDay(now)}</b>, {toDay(now)}th</TLDate>;
+            <TLMonth>{toMonth(now)}</TLMonth>
+            <TLCount><b>{this.props.toDoStore.toDos.length}</b> Tasks</TLCount>
+          </TLHeader>
+          <TLNew>
+            <Input
+              id="new-todo"
+              onKeyPress={this.handleKeyPress}
+              placeholder="Add new task!"
+              autoFocus
+            />
+          </TLNew>
+          <TLList>
+            {this.toDos()}
+          </TLList>
+        </TLWrapper>
+      </Page>
+    );
+  }
 }
 
 export default ToDoList;
