@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ToDoList /> content renders correctly 1`] = `
+Array [
+  <Layout__Page>
+    <ToDoListstyles__TLWrapper>
+      <ToDoListstyles__TLHeader>
+        <ToDoListstyles__TLDate>
+          <b>
+            Friday
+          </b>
+          , 
+          20
+          th
+        </ToDoListstyles__TLDate>
+        <ToDoListstyles__TLMonth>
+          October
+        </ToDoListstyles__TLMonth>
+        <ToDoListstyles__TLCount>
+          <b>
+            0
+          </b>
+           Tasks
+        </ToDoListstyles__TLCount>
+      </ToDoListstyles__TLHeader>
+      <ToDoListstyles__TLNew>
+        <Input
+          autoFocus={true}
+          id="new-todo"
+          onKeyPress={[Function]}
+          placeholder="Add new task!"
+        />
+      </ToDoListstyles__TLNew>
+      <List__UL />
+    </ToDoListstyles__TLWrapper>
+  </Layout__Page>,
+]
+`;

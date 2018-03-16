@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ToDo /> content renders correctly 1`] = `
+Array [
+  <List__LI
+    completed={false}
+  >
+    <Input__Checkbox
+      checked={false}
+      onChange={[Function]}
+    />
+    <ToDoListstyles__TLShow
+      onDoubleClick={[Function]}
+    >
+      Test
+    </ToDoListstyles__TLShow>
+    <Button
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-times"
+      />
+    </Button>
+  </List__LI>,
+]
+`;

@@ -1,0 +1,14 @@
+[ignore]
+
+[include]
+
+[libs]
+flowLib/
+
+[lints]
+
+[options]
+esproposal.decorators=ignore
+module.name_mapper='^styles' ->'<PROJECT_ROOT>/src/styles'
+
+[strict]
