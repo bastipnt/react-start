@@ -43,7 +43,7 @@ class ToDoList extends Component<Props> {
       <Page>
         <TLWrapper>
           <TLHeader>
-            <TLDate><b>{toWeekDay(now)}</b>, {toDay(now)}th</TLDate>;
+            <TLDate><b>{toWeekDay(now)}</b>, {toDay(now)}th</TLDate>
             <TLMonth>{toMonth(now)}</TLMonth>
             <TLCount><b>{this.props.toDoStore.toDos.length}</b> Tasks</TLCount>
           </TLHeader>

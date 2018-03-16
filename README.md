@@ -27,25 +27,21 @@ Inspiration and many ideas taken from
   - [yarn serve](#yarn-serve)
   - [yarn prod](#yarn-prod)
   - [yarn test](#yarn-test)
+  - [yarn test:debug](#yarn-test-debug)
   - [yarn coverage](#yarn-coverage)
   - [yarn watch](#yarn-watch)
   - [yarn build:dll](#yarn-build-dll)
+  - [yarn storybook](#yarn-storybook)
+  - [yarn postinstall](#yarn-postinstall)
 - [Routing](#routing)
-- [State management](#state-management)
 - [Styling](#styling)
-- [Locales](#locales)
-- [Deployment](#deployment)
+- [Localisation](#localisation)
 - [Testing](#testing)
-- [Assets](#assets)
 - [Linting](#linting)
 - [Babel](#babel)
   - [Plugins](#plugins)
   - [Presets](#presets)
   - [Env](#env)
-- [Webpack](#webpack)
-- [Used third party software](#used-third-party-software)
-- [To be eventually added](#to-be-eventually-added)
-- [Other interesting stuff](#other-interesting-stuff)
 
 ## Features
 
@@ -75,13 +71,20 @@ No commit without being lintet, to assure code quality and best practices.
 
 Run Jest tests before each build! It's not possible to deploy with failing tests.
 
+**Storybook**
+
+Document your components with [storybook](https://storybook.js.org/) to keep track of your styles and
+to make ist easier working in a team.
+
 ## Getting started
 - Clone this repo: `git clone https://github.com/lItc0de/react-start.git`
 - Get inside: `cd react-start`
 - Install dependencies using [yarn](https://yarnpkg.com/lang/en/docs/install/): `yarn install`
 - Run that thing on http://localhost:3000 with: `yarn start`
+- Feel free to check out the example project, that is included
 
--> Now you are good to go and build your awsome project!
+-> Now you are good to go and build your awsome project!  
+_just delete the example files ;D_
 
 ## Folder Structure
 
@@ -95,15 +98,25 @@ Run Jest tests before each build! It's not possible to deploy with failing tests
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 `components/` all your components and component styles  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`locales/` for your language files  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`stores/` place for mobx stores  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 `styles/` all the reusable styles, shared throughout your components  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`utils/` put your reused functions in here  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 `App.jsx` your main component  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-`globalStyles.js` in here you could set the font or other things, that should apply to the whole app  
+`i18n.js` config file for localisation  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 `index.html` in here your app gets injected  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 `index.js` this file injects your app in the index.html file and loads other dependencies  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`manifest.json` [web app manifest file](https://developer.mozilla.org/en-US/docs/Web/Manifest)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`routes.jsx` define your routes in here  
 &nbsp;&nbsp;&nbsp;&nbsp;
 `tests/` in here you can write your tests
 
@@ -111,40 +124,43 @@ Run Jest tests before each build! It's not possible to deploy with failing tests
 ## Available Scripts
 
 ### `yarn start`
-
 Starts the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will rerender if you make changes.
 
 ### `yarn build`
-
 compiles your app for production use<br/>
 you can find it then in the `build` folder
 
 ### `yarn serve`
-
 starts an express server, that serves your production compiled app from the build folder
 
-## `yarn prod`
-
+### `yarn prod`
 does the two above steps: first builds the app, then serves it
 
 ### `yarn test`
-
 runs your jest tests
 
-### `yarn coverage`
+<h3 id="yarn-test-debug"><code>yarn test:debug</code></h3>
+runs your jest tests in debug mode  
+you can use [chrome](https://www.google.com/chrome/) to connect to the node server
 
+### `yarn coverage`
 runs your jest tests and prints coverage report
 
 ### `yarn watch`
-
-runs your jest tests in watch mode
+runs your jest tests in watch mode  
+_reruns tests on save_
 
 <h3 id="yarn-build-dll"><code>yarn build:dll</code></h3>
-
 builds a DLL file for improving compile time in development (https://webpack.js.org/plugins/dll-plugin)
+
+### `yarn storybook`
+starts the storybook server
+
+### `yarn postinstall`
+runs automatically after `yarn install` and builds your webpack DLL
 
 ## Routing
 
@@ -158,44 +174,45 @@ You can style your components with [styled-components](https://github.com/styled
 With this you can write real `CSS` in `JavaScript`!  
 Please check their [website](https://www.styled-components.com/) for further information
 
-## Locales
+## Localisation
 
-For internationalisation we will use either:
-
-[react-intl](https://github.com/yahoo/react-intl) or
-[react-i18next](https://github.com/i18next/react-i18next)
+This boilerplate has build in localisation support with
+[react-i18next](https://github.com/i18next/react-i18next).  
+Add your localisation files in `src/locales/`.  
+You can configurate _i18next_ in `src/i18n.js`.
 
 ## Testing
 
-For testing we use [Jest](https://facebook.github.io/jest): Jest is used by Facebook to test all JavaScript code
-including React applications. One of Jest's philosophies is to provide an integrated `zero-configuration` experience.
-
+For testing we use [Jest](https://facebook.github.io/jest): Jest is used by Facebook to test all JavaScript code including React applications. One of Jest's philosophies is to provide an integrated `zero-configuration` experience.  
+You can write your tests in `tests/` with the filename pattern `[component name].test.js`.  
+For a better rendering experience of your react components the test setup includes [enzyme](http://airbnb.io/enzyme).  
+The test setup file can be found in `config/setup.test.js`.
 
 ## Linting
 
-- Lint your code before commiting with [lint-staged](https://github.com/okonet/lint-staged)<br>
-  for git hooks we use [pre-commit](https://github.com/observing/pre-commit)
+- Lint your code before commiting with [lint-staged](https://github.com/okonet/lint-staged)  
+  for git hooks [pre-commit](https://github.com/observing/pre-commit) is used
 - **Configuration:**
-  - Parser: [babel-eslint](https://github.com/babel/babel-eslint): Use for [Flow](https://github.com/facebook/flow) and
+  - **Parser**: [babel-eslint](https://github.com/babel/babel-eslint): Use for [Flow](https://github.com/facebook/flow) and
   other experimantal features, that are not supportet by the [default parser](https://github.com/eslint/espree).
-  - [eslint-config-airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb): This package
+  - **[eslint-config-airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)**: This package
   provides Airbnb's .eslintrc as an extensible shared config.
-  - Env: Specify supportet platfroms
-  - Plugins:
+  - **Env**: Specify supportet platfroms
+  - **Plugins**:
     - [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react): Adds linting rules for react
     - [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y): Static AST checker for
     [accessibility rules](https://github.com/reactjs/react-a11y) on JSX elements.
-  - Parser Options: Specify the JavaScript language options you want to support as explained
+  - **Parser Options**: Specify the JavaScript language options you want to support as explained
   [here](https://eslint.org/docs/user-guide/configuring#specifying-parser-options)
-  - Rules: Overwrite default rules.
-  - Settings: Add [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import), an ESLint plugin with rules
-  that help validate proper imports.
+  - **Rules**: Overwrite default rules.
+  - **Settings**: Add [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import), an ESLint plugin with rules that help validate proper imports.
 
 ## Babel
 
 ### Plugins
-- [styled-components](https://www.styled-components.com/docs/tooling#babel-plugin): This plugin adds support for
-server-side rendering, for minification of styles and gives you a nicer debugging experience.
+- [styled-components](https://www.styled-components.com/docs/tooling#babel-plugin): This plugin adds support for server-side rendering, for minification of styles and gives you a nicer debugging experience.
+- [transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) A plugin for Babel 6 that (mostly) replicates the old decorator behavior from Babel 5.  
+Allows us to work with decorators from mobx.
 
 ### Presets
 - [Env preset](https://babeljs.io/docs/plugins/preset-env): Babel preset that automatically determines the Babel plugins
@@ -232,39 +249,10 @@ You can use the `env` option to set specific options when in a certain environme
   `import()` to a deferred `require()`, for node. Matches the
   [proposed spec](https://github.com/domenic/proposal-import-function).
 
-## Webpack
-
-[webpack](https://webpack.js.org): Webpack is used to compile JavaScript modules.
-
-- [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin): Simplifies creation of HTML files to serve
-your webpack bundles
-
-## Used third party software
-
-- [react-helmet](https://github.com/nfl/react-helmet): A document head manager for React
-
-- [react-loadable](https://github.com/thejameskyle/react-loadable): ⏳ A higher order component for loading components
-with promises.
-
-- [chalk](https://github.com/chalk/chalk): 🖍 Terminal string styling done right.
-
-- [ip](https://github.com/indutny/node-ip): IP address utilities for node.js
-
-- [circular-dependency-plugin](https://github.com/aackerman/circular-dependency-plugin): Detect circular dependencies
-in modules compiled with Webpack.
-
-- [eventsource-polyfill](https://github.com/Yaffle/EventSource): a polyfill for http://www.w3.org/TR/eventsource
-
-- [add-asset-html-webpack-plugin](https://github.com/simenb/add-asset-html-webpack-plugin): Add a `JavaScript` or `CSS`
-asset to the HTML generated by `html-webpack-plugin`
-
-- [cross-env](https://github.com/kentcdodds/cross-env): 🔀 Cross platform setting of environment scripts
-
-- [whatwg-fetch](https://www.npmjs.com/package/whatwg-fetch): window.fetch polyfill for older browsers
-
-- [react-dev-utils](https://github.com/facebookincubator/create-react-app/tree/master/packages/react-dev-utils): This
-package includes some utilities used by [Create React App](https://github.com/facebookincubator/create-react-app).
-
-- [exports-loader](https://github.com/webpack-contrib/exports-loader): Exports variables from inside the file by
-appending `exports[...] = ...` statements..
+This documentation will be finished and improved over time. If you have some points, that shouldn't be missing in this doku, feel free to contact me. Also, if you have ideas improving this boilerplate, they are very welcome!  
+Next steps are:  
+- upgrade webpack to version 4
+- finish the doku
+- use the same webpack configuration for the app and storybook
+- ...
 
