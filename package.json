@@ -296,7 +296,7 @@
     "pre-commit": "^1.2.2",
     "react-dev-utils": "^5.0.0",
     "react-test-renderer": "^16.2.0",
-    "request": "2.34",
+    "request": "2.85.0",
     "shelljs": "^0.8.1",
     "sinon": "^4.4.2",
     "style-loader": "^0.20.1",
